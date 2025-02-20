@@ -54,9 +54,13 @@ class AuthOtpController extends Controller
     public function verifyOtp(Request $request)
     {
         $request->validate([
-            'otp' => 'required|digits:5',  // Ensure OTP is exactly 6 digits
-            'mobile_no' => 'required|regex:/^(\+?(\d{1,3}))?(\d{10})$/', // Mobile number validation (ensure proper format)
+            'otp' => 'required|digits:5',
+            'mobile_no' => [
+                'required',
+                'regex:/^(9627|9628|9629)\d{8}$/', 
+            ],
         ]);
+        
 
         // Retrieve OTP record for the mobile number
         $user = User::where('mobile_no', $request->mobile_no)->first();

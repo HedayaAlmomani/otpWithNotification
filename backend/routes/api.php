@@ -14,10 +14,14 @@ Route::get('/notifications', [NotificationController::class, 'getAllNotification
 
 
 
+
 Route::post('/generate-otp', [AuthOtpController::class, 'generateOtpForLoginRegister'])->name('otp.generate');
 Route::post('/verify-otp', [AuthOtpController::class, 'verifyOtp'])->name('otp.verify');
 
 
-Route::middleware('auth:sanctum')->post('/user/{id}', [UserController::class, 'updateUserById']);
-Route::middleware('auth:sanctum')->get('/user', [UserController::class, 'getAllUsers']);
-Route::middleware('auth:sanctum')->get('/user/{id}', [UserController::class, 'getUserById']);
+Route::post('/user/{id}', [UserController::class, 'update']);
+Route::get('/user', [UserController::class, 'getAllUsers'])->middleware(['auth:sanctum', 'admin']);
+
+Route::get('/user/{id}', [UserController::class, 'getUserById']);
+
+Route::put('/user/{id}', [UserController::class, 'updateKycStatus'])->middleware(['auth:sanctum', 'admin']);

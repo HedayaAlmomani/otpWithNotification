@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom/client";
 import "../node_modules/font-awesome/css/font-awesome.min.css";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom"; 
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./redux/store";
 import "./style.scss";
@@ -14,7 +14,6 @@ import {
   ContactPage,
   Cart,
   Login,
-  Register,
   Checkout,
   PageNotFound,
   Navbar,
@@ -31,10 +30,11 @@ import ViewBranches from "./components/Admin/ViewBranches";
 import SideMenu from "./CoreComponent/SideMenu";
 import MySideMenu from "./components/MySideMenu";
 import NotificationComponent from "./components/NotificationComponent";
+import SettingsPage from "./components/Settings";
 
 const App = () => {
   const [showLoader, setShowLoader] = useState(false);
-  const location = useLocation(); // useLocation hook here
+  const location = useLocation();
 
   useEffect(() => {
     const handleShowLoader = () => setShowLoader(true);
@@ -52,24 +52,21 @@ const App = () => {
   return (
     <div>
       <div className="app-container">
-        <NotificationComponent/>
-        {/* {location.pathname !== "/login" && <MySideMenu />} */}
-        <MySideMenu />
+        {location.pathname !== "/login" && <MySideMenu />}
         <div className="main-content">
-          {/* {location.pathname !== "/login" && <Navbar />} */}
-          <Navbar />
+          {location.pathname !== "/login" && <Navbar />}
           <Loader show={showLoader} />
           <ScrollToTop>
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/product" element={<Products />} />
-              <Route path="/product/:id" element={<Product />} />
+              {/* <Route path="/product" element={<Products />} />
+              <Route path="/product/:id" element={<Product />} /> */}
               <Route path="/about" element={<AboutPage />} />
               <Route path="/contact" element={<ContactPage />} />
               <Route path="/cart" element={<Cart />} />
               <Route path="/login" element={<Login />} />
-              <Route path="/register" element={<Register />} />
-              <Route path="/checkout" element={<Checkout />} />
+              <Route path="/settings" element={<SettingsPage />} />
+              {/* <Route path="/checkout" element={<Checkout />} /> */}
 
               <Route path="/admin">
                 <Route path="new/menu" element={<CreateMenu />} />

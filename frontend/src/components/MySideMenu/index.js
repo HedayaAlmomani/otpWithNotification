@@ -2,16 +2,11 @@ import React from "react";
 import SideMenu from "../../CoreComponent/SideMenu";
 import {
   FaHome,
-  FaShoppingCart,
-  FaBox,
   FaInfoCircle,
   FaPhone,
   FaSignInAlt,
-  FaCreditCard,
   FaTools,
-  FaUsers,
-  FaClipboardList,
-  FaStore,
+  FaCog, 
 } from "react-icons/fa";
 import "./style.scss";
 
@@ -21,16 +16,6 @@ const MySideMenu = () => {
       label: "Home",
       icon: <FaHome />,
       path: "/",
-    },
-    {
-      label: "Cart",
-      icon: <FaShoppingCart />,
-      path: "/cart",
-    },
-    {
-      label: "Checkout",
-      icon: <FaCreditCard />,
-      path: "/checkout",
     },
     {
       label: "About",
@@ -45,34 +30,19 @@ const MySideMenu = () => {
     {
       label: "Authentication",
       icon: <FaSignInAlt />,
-      children: [
-        { label: "Login", path: "/login" },
-        { label: "Register", path: "/register" },
-      ],
+      children: [{ label: "Login", path: "/login" }],
     },
     {
       label: "Admin",
       icon: <FaTools />,
-      children: [
-        {
-          label: "Create Menu",
-          path: "/admin/new/menu",
-          icon: <FaClipboardList />,
-        },
-        {
-          label: "View Menu",
-          path: "/admin/view/menu",
-          icon: <FaClipboardList />,
-        },
-        { label: "View Items", path: "/admin/view/item", icon: <FaBox /> },
-        {
-          label: "View Branches",
-          path: "/admin/view/branches",
-          icon: <FaUsers />,
-        },
-      ],
+      children: [],
     },
-    
+    {
+      label: "Settings",
+      icon: <FaCog />, 
+      children: [{ label: "Settings", path: "/settings" }],
+
+    },
   ];
 
   return <SideMenu menuItems={menuItems} />;

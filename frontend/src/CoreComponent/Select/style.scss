@@ -8,7 +8,7 @@
     font-size: 13px;
     font-weight: 500;
     line-height: 30px;
-    text-align: left;
+    text-align: end;
     color: var(--element-color);
 
     .star {
@@ -42,12 +42,12 @@
       font-size: 13px;
       font-weight: 500;
       line-height: 20px;
-      text-align: left;
+      text-align: end;
       color: #9a9eb2;
     }
 
     .arrow-icon {
-      margin-right: 15px;
+      margin-inline-start: 15px;
       fill: gray;
     }
   }
@@ -106,24 +106,24 @@
     font-size: 11px;
     font-weight: 400;
     line-height: 17px;
-    text-align: left;
+    text-align: end;
     color: var(--error-static);
   }
   .search-feild {
-    padding-left: 15px;
+    padding-inline-end: 15px;
     height: 34px;
     border: none;
     width: 90%;
     outline: none;
     cursor: pointer;
-    margin-left: 1px;
+    margin-inline-end: 1px;
 
     &::placeholder {
       font-family: Arial, Helvetica, sans-serif;
       font-size: 13px;
       font-weight: 500;
       line-height: 20px;
-      text-align: left;
+      text-align: end;
       color: #9a9eb2;
     }
   }

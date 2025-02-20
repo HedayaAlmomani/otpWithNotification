@@ -1,0 +1,135 @@
+$primary-color: #FF6F61; // Orange
+$background-color: #F4F4F4; // Light gray
+$card-background: #FFFFFF; // White
+$text-color: #333333; // Dark gray
+$active-color: #FF6F61; // Orange
+$button-hover: darken($primary-color, 10%);
+$border-radius: 8px;
+$box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+.settings-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: $background-color;
+  padding: 20px;
+}
+
+.settings-card {
+  background-color: $card-background;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+  padding: 24px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.settings-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: $text-color;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.settings-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.setting-label {
+  font-size: 16px;
+  font-weight: 600;
+  color: $text-color;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.button-group {
+  display: flex;
+  gap: 10px;
+}
+
+.language-btn,
+.theme-btn,
+.save-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: $border-radius;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+}
+
+.language-btn {
+  background-color: $background-color;
+  color: $text-color;
+
+  &.active {
+    background-color: $active-color;
+    color: #FFFFFF;
+  }
+}
+
+.theme-btn {
+  background-color: $background-color;
+  color: $text-color;
+
+  &.light {
+    background-color: $primary-color;
+    color: #FFFFFF;
+  }
+
+  &.dark {
+    background-color: #333333;
+    color: #FFFFFF;
+  }
+}
+
+.save-btn {
+  background-color: $primary-color;
+  color: #FFFFFF;
+  width: 100%;
+
+  &:hover {
+    background-color: $button-hover;
+  }
+}
+
+.dark {
+  .settings-card {
+    background-color: #333333;
+    color: #FFFFFF;
+  }
+
+  .settings-title,
+  .setting-label {
+    color: #FFFFFF;
+  }
+
+  .language-btn,
+  .theme-btn {
+    background-color: #444444;
+    color: #FFFFFF;
+
+    &.active {
+      background-color: $active-color;
+    }
+  }
+
+  .save-btn {
+    background-color: $primary-color;
+    color: #FFFFFF;
+
+    &:hover {
+      background-color: $button-hover;
+    }
+  }
+}
