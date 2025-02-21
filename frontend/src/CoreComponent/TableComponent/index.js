@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import SVG from "react-inlinesvg";
 import { arrowBottom, arrowUp } from "../../icons";
+import Pagination from "../Pagination"; // Assuming Pagination component is already available
 
 import "./style.scss";
 
-const Table = ({ data, columns, onSort }) => {
+const Table = ({ data, columns, onSort, pagination, setPagination }) => {
   const [sortConfig, setSortConfig] = useState({ key: null, direction: "asc" });
   const [selectedRow, setSelectedRow] = useState(null);
 
@@ -37,6 +38,12 @@ const Table = ({ data, columns, onSort }) => {
     setSelectedRow(selectedRow === index ? null : index);
   };
 
+  // Get current page data based on pagination
+  const currentPageData = data.slice(
+    (pagination.currentPage - 1) * pagination.perPage,
+    pagination.currentPage * pagination.perPage
+  );
+
   return (
     <div className="table-component-container container mt-4">
       <h2 className="mb-3">User Table</h2>
@@ -65,7 +72,7 @@ const Table = ({ data, columns, onSort }) => {
             </tr>
           </thead>
           <tbody>
-            {data.map((item, index) => (
+            {currentPageData.map((item, index) => (
               <tr
                 key={index}
                 onClick={() => handleRowClick(index)}
@@ -89,6 +96,9 @@ const Table = ({ data, columns, onSort }) => {
           </tbody>
         </table>
       </div>
+
+      {/* Add the Pagination component here */}
+      <Pagination pagination={pagination} setPagination={setPagination} />
     </div>
   );
 };
@@ -97,6 +107,8 @@ Table.propTypes = {
   data: PropTypes.array.isRequired,
   columns: PropTypes.array.isRequired,
   onSort: PropTypes.func.isRequired,
+  pagination: PropTypes.object.isRequired,
+  setPagination: PropTypes.func.isRequired,
 };
 
 export default Table;

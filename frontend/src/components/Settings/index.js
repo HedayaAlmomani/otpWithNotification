@@ -1,92 +1,52 @@
 import React, { useState, useEffect } from "react";
-// import "./style.scss";
 import Table from "../../CoreComponent/TableComponent";
 
 
 const ParentComponent = () => {
-  // Static data with 15 columns
-  const staticData = [
-    { id: 1, name: "John Doe", email: "john@example.com", role: "Admin", age: 30, country: "USA", city: "New York", status: "Active", salary: 1000, department: "HR", joinDate: "2022-01-01", phone: "123-456-7890", gender: "Male", birthday: "1990-05-15", address: "1234 Elm Street" },
-    { id: 2, name: "Jane Smith", email: "jane@example.com", role: "User", age: 28, country: "Canada", city: "Toronto", status: "Inactive", salary: 900, department: "IT", joinDate: "2021-06-15", phone: "234-567-8901", gender: "Female", birthday: "1993-08-25", address: "5678 Maple Ave" },
-    { id: 3, name: "Alice Johnson", email: "alice@example.com", role: "Editor", age: 35, country: "UK", city: "London", status: "Active", salary: 1200, department: "Finance", joinDate: "2020-03-10", phone: "345-678-9012", gender: "Female", birthday: "1988-02-12", address: "4321 Oak Road" },
-    { id: 4, name: "Bob Brown", email: "bob@example.com", role: "User", age: 40, country: "Australia", city: "Sydney", status: "Active", salary: 1100, department: "Marketing", joinDate: "2019-09-30", phone: "456-789-0123", gender: "Male", birthday: "1983-11-20", address: "9876 Pine Street" },
-    // Add more data here...
+  // Static data for the table (mock data)
+  const mockData = [
+    { id: 1, name: "John Doe", age: 30, email: "john.doe@example.com" },
+    { id: 2, name: "Jane Smith", age: 25, email: "jane.smith@example.com" },
+    { id: 3, name: "Bob Johnson", age: 40, email: "bob.johnson@example.com" },
+    { id: 4, name: "Alice Brown", age: 35, email: "alice.brown@example.com" },
+    { id: 5, name: "Charlie Davis", age: 50, email: "charlie.davis@example.com" },
+    { id: 6, name: "Eve White", age: 28, email: "eve.white@example.com" },
+    { id: 7, name: "Frank Black", age: 60, email: "frank.black@example.com" },
+    { id: 8, name: "Grace Green", age: 32, email: "grace.green@example.com" },
+    { id: 9, name: "Harry Blue", age: 45, email: "harry.blue@example.com" },
+    { id: 10, name: "Ivy Pink", age: 38, email: "ivy.pink@example.com" },
+    { id: 11, name: "Jack Purple", age: 55, email: "jack.purple@example.com" },
+    { id: 12, name: "Kim Yellow", age: 60, email: "kim.yellow@example.com" },
   ];
 
-  // Define the columns with 15 columns
+  // Columns definition
   const columns = [
-    { key: "id", label: "ID", fixed: true }, // Fixed column
-    { key: "name", label: "Name" },
-    { key: "email", label: "Email" },
-    { key: "role", label: "Role" },
-    { key: "age", label: "Age" },
-    { key: "country", label: "Country" },
-    { key: "city", label: "City" },
-    { key: "status", label: "Status" },
-    { key: "salary", label: "Salary" },
-    { key: "department", label: "Department" },
-    { key: "joinDate", label: "Join Date" },
-    { key: "phone", label: "Phone" },
-    { key: "gender", label: "Gender" },
-    { key: "birthday", label: "Birthday" },
-    { key: "address", label: "Address" },
     { key: "id", label: "ID" },
     { key: "name", label: "Name" },
-    { key: "email", label: "Email" },
-    { key: "role", label: "Role" },
     { key: "age", label: "Age" },
-    { key: "country", label: "Country" },
-    { key: "city", label: "City" },
-    { key: "status", label: "Status" },
-    { key: "salary", label: "Salary" },
-    { key: "department", label: "Department" },
-    { key: "joinDate", label: "Join Date" },
-    { key: "phone", label: "Phone" },
-    { key: "gender", label: "Gender" },
-    { key: "birthday", label: "Birthday" },
-    { key: "address", label: "Address" },
-    { key: "id", label: "ID" },
-    { key: "name", label: "Name" },
     { key: "email", label: "Email" },
-    { key: "role", label: "Role" },
-    { key: "age", label: "Age" },
-    { key: "country", label: "Country" },
-    { key: "city", label: "City" },
-    { key: "status", label: "Status" },
-    { key: "salary", label: "Salary" },
-    { key: "department", label: "Department" },
-    { key: "joinDate", label: "Join Date" },
-    { key: "phone", label: "Phone" },
-    { key: "gender", label: "Gender" },
-    { key: "birthday", label: "Birthday" },
-    { key: "address", label: "Address" },
   ];
 
-  // Sorting configuration (initially based on 'id' and ascending order)
-  const [sortConfig, setSortConfig] = useState({ key: "id", direction: "asc" });
-  const [data, setData] = useState(staticData);
+  // Pagination state
+  const [pagination, setPagination] = useState({
+    currentPage: 1,
+    perPage: 5,
+    totalElements:30,
+  });
 
-  // Sorting function to handle the sort logic
-  const handleSortChange = (sortField, sortType) => {
-    setSortConfig({ key: sortField, direction: sortType });
-
-    // Sort the data based on the sort configuration
-    const sortedData = [...data].sort((a, b) => {
-      if (a[sortField] < b[sortField]) return sortType === "asc" ? -1 : 1;
-      if (a[sortField] > b[sortField]) return sortType === "asc" ? 1 : -1;
-      return 0;
-    });
-
-    setData(sortedData); // Update the state with the sorted data
+  const handleSort = (key, direction) => {
+    console.log(`Sorted by ${key} in ${direction} order`);
   };
 
   return (
-    <div>
-      <h1>Static Data Table with Sorting</h1>
+    <div className="app-container">
+      <h1>Table with Pagination</h1>
       <Table
-        data={data}           // Pass the data (static in this case)
-        columns={columns}     // Pass the columns configuration
-        onSort={handleSortChange} // Callback to handle sorting logic
+        data={mockData}
+        columns={columns}
+        onSort={handleSort}
+        pagination={pagination}
+        setPagination={setPagination}
       />
     </div>
   );
@@ -95,8 +55,11 @@ const ParentComponent = () => {
 
 
 
+
 const SettingsPage = () => {
-  const [language, setLanguage] = useState(localStorage.getItem("language") || "en");
+  const [language, setLanguage] = useState(
+    localStorage.getItem("language") || "en"
+  );
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
 
   useEffect(() => {
@@ -115,10 +78,9 @@ const SettingsPage = () => {
 
   return (
     <div className="settings-container">
-        <ParentComponent/>
+      <ParentComponent />
       <div className="settings-card">
         <h1 className="settings-title">Settings</h1>
-
         <div className="settings-content">
           <div className="language-settings">
             <span className="setting-label">Language</span>
@@ -137,7 +99,6 @@ const SettingsPage = () => {
               </button>
             </div>
           </div>
-
           <div className="theme-settings">
             <span className="setting-label">Theme</span>
             <div className="button-group">
@@ -150,12 +111,8 @@ const SettingsPage = () => {
             </div>
           </div>
         </div>
-
         <div className="save-settings">
-          <button
-            onClick={() => alert("Settings Saved!")}
-            className="save-btn"
-          >
+          <button onClick={() => alert("Settings Saved!")} className="save-btn">
             Save Settings
           </button>
         </div>

@@ -1,46 +1,71 @@
-import React from 'react';
-import './style.scss';
+import React from "react";
+import "./style.scss";
 
-const Pagination = ({ currentPage, totalPages, onPageChange }) => {
-  const handlePageClick = (pageNumber) => {
-    if (pageNumber >= 1 && pageNumber <= totalPages) {
-      onPageChange(pageNumber);
-    }
+const Pagination = ({ pagination, setPagination }) => {
+  const { currentPage, perPage, totalElements } = pagination;
+
+  const totalPages = Math.ceil(totalElements / perPage);
+
+  const handlePageChange = (newPage) => {
+    setPagination((prev) => {
+      return { ...prev, currentPage: newPage };
+    });
   };
 
-  const renderPageNumbers = () => {
+  const handleNextSet = () => {
+    setPagination((prev) => {
+      // Move to the next set of 5 pages
+      const nextPage = Math.min(prev.currentPage + 5, totalPages);
+      return { ...prev, currentPage: nextPage };
+    });
+  };
+
+  const handleEndPage = () => {
+    setPagination((prev) => ({ ...prev, currentPage: totalPages }));
+  };
+
+  const renderPagination = () => {
+    const startPage = Math.floor((currentPage - 1) / 5) * 5 + 1;
     const pages = [];
-    for (let i = 1; i <= totalPages; i++) {
-      pages.push(
-        <li
-          key={i}
-          className={`pagination-item ${i === currentPage ? 'active' : ''}`}
-          onClick={() => handlePageClick(i)}
-        >
-          {i}
-        </li>
-      );
+
+    for (let i = startPage; i < startPage + 5 && i <= totalPages; i++) {
+      pages.push(i);
     }
-    return pages;
+
+    return pages.map((page) => (
+      <button
+        key={page}
+        onClick={() => handlePageChange(page)}
+        className={`pagination-button ${currentPage === page ? "active" : ""}`}
+      >
+        {page}
+      </button>
+    ));
   };
 
   return (
-    <div className="pagination-container">
-      <ul className="pagination-list">
-        <li
-          className={`pagination-item ${currentPage === 1 ? 'disabled' : ''}`}
-          onClick={() => handlePageClick(currentPage - 1)}
-        >
-          Prev
-        </li>
-        {renderPageNumbers()}
-        <li
-          className={`pagination-item ${currentPage === totalPages ? 'disabled' : ''}`}
-          onClick={() => handlePageClick(currentPage + 1)}
-        >
-          Next
-        </li>
-      </ul>
+    <div className="pagination">
+      <button
+        onClick={() => handlePageChange(currentPage - 1)}
+        disabled={currentPage === 1}
+        className="pagination-button"
+      >
+        Prev
+      </button>
+
+      {renderPagination()}
+
+      <button onClick={handleNextSet} className="pagination-button">
+        Next
+      </button>
+
+      <button
+        onClick={handleEndPage}
+        disabled={currentPage === totalPages}
+        className="pagination-button"
+      >
+        End
+      </button>
     </div>
   );
 };

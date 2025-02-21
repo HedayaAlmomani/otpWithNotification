@@ -1,39 +1,62 @@
-.pagination-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-  }
-  
-  .pagination-list {
-    list-style-type: none;
-    padding: 0;
-    display: flex;
-    gap: 10px;
-  }
-  
-  .pagination-item {
-    padding: 10px 15px;
-    border: 1px solid #ddd;
+:root {
+  --primary-hover-color: #ff8c00;
+  --disabled-color: #cccccc;
+  --text-color: #333333;
+  --background-color: #ffffff;
+  --border-radius: 4px;
+  --transition-speed: 0.3s;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  padding: 8px;
+  background-color: var(--background-color);
+  border-radius: var(--border-radius);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  .pagination-button {
+    padding: 4px 12px;
+    border: 1px solid var(--primary-color);
+    border-radius: var(--border-radius);
+    background-color: transparent;
+    color: var(--primary-color);
+    font-size: 12px;
+    font-weight: 500;
     cursor: pointer;
-    font-size: 14px;
-    color: #333;
-    transition: all 0.3s ease;
-    border-radius: 4px;
-  
-    &:hover {
-      background-color: #f0f0f0;
+    transition: all var(--transition-speed) ease;
+
+    &:hover:not(:disabled) {
+      background-color: var(--primary-color);
+      color: var(--background-color);
+      border-color: var(--primary-color);
     }
-  
+
+    &:disabled {
+      cursor: not-allowed;
+      border-color: var(--disabled-color);
+      color: var(--disabled-color);
+    }
+
     &.active {
-      background-color: #ef233c;
-      color: white;
-      border-color: #ef233c;
-    }
-  
-    &.disabled {
-      pointer-events: none;
-      color: #ccc;
-      border-color: #ccc;
+      background-color: var(--primary-color);
+      color: var(--background-color);
+      border-color: var(--primary-color);
+      font-weight: bold;
     }
   }
-  
+
+  @media (max-width: 600px) {
+    .pagination {
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+
+    .pagination-button {
+      padding: 4px 10px;
+      font-size: 10px;
+    }
+  }
+}

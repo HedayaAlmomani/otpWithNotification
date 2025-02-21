@@ -24,4 +24,4 @@ Route::get('/user', [UserController::class, 'getAllUsers'])->middleware(['auth:s
 
 Route::get('/user/{id}', [UserController::class, 'getUserById']);
 
-Route::put('/user/{id}', [UserController::class, 'updateKycStatus'])->middleware(['auth:sanctum', 'admin']);
+Route::put('/user/{id}', [UserController::class, 'updateKycStatus'])->middleware(['auth:sanctum', 'checkAdmin']);

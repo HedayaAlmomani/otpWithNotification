@@ -162,9 +162,9 @@ class UserController extends Controller
                 'message' => 'Users retrieved successfully.',
                 'user' => $usersData,
                 'pagination' => [
-                    'current_page' => $users->currentPage(),
-                    'per_page' => $users->perPage(),
-                    'total_elements' => $users->total(),
+                    'currentPage' => $users->currentPage(),
+                    'perPage' => $users->perPage(),
+                    'totalElements' => $users->total(),
                     'last_page' => $users->lastPage()
                 ]
             ], 200);
