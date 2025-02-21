@@ -6,7 +6,7 @@ import {
   FaPhone,
   FaSignInAlt,
   FaTools,
-  FaCog, 
+  FaCog,
 } from "react-icons/fa";
 import "./style.scss";
 
@@ -35,13 +35,12 @@ const MySideMenu = () => {
     {
       label: "Admin",
       icon: <FaTools />,
-      children: [],
+      children: [{ label: "Users", path: "/admin/users" }],
     },
     {
       label: "Settings",
-      icon: <FaCog />, 
+      icon: <FaCog />,
       children: [{ label: "Settings", path: "/settings" }],
-
     },
   ];
 
