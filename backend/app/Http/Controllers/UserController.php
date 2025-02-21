@@ -92,7 +92,7 @@ class UserController extends Controller
                 ], 403);
             }
     
-            $perPage = $request->input('per_page', 10); 
+            $perPage = $request->input('perPage', 10); 
             $currentPage = $request->input('page', 1); 
     
             $query = User::query();
@@ -117,11 +117,11 @@ class UserController extends Controller
             // استرجاع المستخدمين مع الباجيناشن
             $users = $query->paginate($perPage, ['*'], 'page', $currentPage);
     
-            if ($users->isEmpty()) {
-                return response()->json([
-                    'message' => 'No users found.'
-                ], 404);
-            }
+            // if ($users->isEmpty()) {
+            //     return response()->json([
+            //         'message' => 'No users found.'
+            //     ], 404);
+            // }
     
             // إرجاع بيانات المستخدمين مع الصور
             $usersData = [];
@@ -160,7 +160,7 @@ class UserController extends Controller
             return response()->json([
                 'success' => true,
                 'message' => 'Users retrieved successfully.',
-                'user' => $usersData,
+                'users' => $usersData,
                 'pagination' => [
                     'currentPage' => $users->currentPage(),
                     'perPage' => $users->perPage(),

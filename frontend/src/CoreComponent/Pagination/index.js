@@ -2,6 +2,8 @@ import React from "react";
 import "./style.scss";
 
 const Pagination = ({ pagination, setPagination }) => {
+  console.log({ pagination });
+
   const { currentPage, perPage, totalElements } = pagination;
 
   const totalPages = Math.ceil(totalElements / perPage);
@@ -14,7 +16,6 @@ const Pagination = ({ pagination, setPagination }) => {
 
   const handleNextSet = () => {
     setPagination((prev) => {
-      // Move to the next set of 5 pages
       const nextPage = Math.min(prev.currentPage + 5, totalPages);
       return { ...prev, currentPage: nextPage };
     });
@@ -55,7 +56,11 @@ const Pagination = ({ pagination, setPagination }) => {
 
       {renderPagination()}
 
-      <button onClick={handleNextSet} className="pagination-button">
+      <button
+        onClick={handleNextSet}
+        className="pagination-button"
+        disabled={currentPage === totalPages}
+      >
         Next
       </button>
 

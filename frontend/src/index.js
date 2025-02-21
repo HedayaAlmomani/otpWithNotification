@@ -31,6 +31,7 @@ import SideMenu from "./CoreComponent/SideMenu";
 import MySideMenu from "./components/MySideMenu";
 import NotificationComponent from "./components/NotificationComponent";
 import SettingsPage from "./components/Settings";
+import ViewAllUsers from "./components/AdminComponents/ViewAllUsers";
 
 const App = () => {
   const [showLoader, setShowLoader] = useState(false);
@@ -69,6 +70,8 @@ const App = () => {
               {/* <Route path="/checkout" element={<Checkout />} /> */}
 
               <Route path="/admin">
+              <Route path="users" element={<ViewAllUsers />} />
+
                 <Route path="new/menu" element={<CreateMenu />} />
                 <Route path="view/menu" element={<MenuViewer />} />
                 <Route path="view/item" element={<ViewItems />} />
