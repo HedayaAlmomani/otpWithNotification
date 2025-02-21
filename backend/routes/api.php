@@ -20,7 +20,7 @@ Route::post('/verify-otp', [AuthOtpController::class, 'verifyOtp'])->name('otp.v
 
 
 Route::post('/user/{id}', [UserController::class, 'update']);
-Route::get('/user', [UserController::class, 'getAllUsers'])->middleware(['auth:sanctum', 'admin']);
+Route::get('/user', [UserController::class, 'getAllUsers'])->middleware(['auth:sanctum', 'checkAdmin']);
 
 Route::get('/user/{id}', [UserController::class, 'getUserById']);
 
