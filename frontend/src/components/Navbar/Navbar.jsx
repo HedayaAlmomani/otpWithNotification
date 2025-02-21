@@ -14,12 +14,15 @@ const Navbar = () => {
     document.documentElement.dir = savedLanguage === "ar" ? "rtl" : "ltr";
   }, [setCurrentLanguage]);
 
+
   const changeLanguage = (lang) => {
     setCurrentLanguage(lang);
     document.documentElement.lang = lang;
     document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
     localStorage.setItem("language", lang); // Store the selected language in localStorage
+    window.location.reload(); // Reload the page to apply changes
   };
+  
 
   return (
     <nav className="navbar navbar-expand-lg bg-light sticky-top navbar-container">
