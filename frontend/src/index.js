@@ -52,6 +52,7 @@ const App = () => {
 
   return (
     <div>
+      
       <div className="app-container">
         {location.pathname !== "/login" && <MySideMenu />}
         <div className="main-content">
@@ -90,6 +91,7 @@ const App = () => {
 };
 
 const Root = () => (
+  
   <BrowserRouter>
     <Provider store={store}>
       <App />

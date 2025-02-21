@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import useLanguage from '../../../localization/index';
+
 import Table from "../../../CoreComponent/TableComponent";
 import httpServices from "../../../common/httpServices";
 import { columns, initialFilter, kycStatusOptions } from "./helper";
@@ -7,6 +9,7 @@ import Select from "../../../CoreComponent/Select";
 import "./style.scss";
 
 const ViewAllUsers = () => {
+  const { t } = useLanguage();
   const [data, setData] = useState([]);
   const [pagination, setPagination] = useState({
     currentPage: 1,
@@ -64,36 +67,35 @@ const ViewAllUsers = () => {
 
   return (
     <div className="view-all-users-container">
-      <div className="users-header">All Users</div>
+      <div className="users-header">{t("all_users")}</div> {/* Translated text */}
       <div className="view-all-users">
- 
         <div className="filters-container sticky-top">
           <Input
-            label="Full Name"
-            placeholder="Search by Full Name"
+            label={t("full_name")}
+            placeholder={t("search_by_full_name")}
             inputValue={filters.full_name}
             setInputValue={(value) =>
               setFilters({ ...filters, full_name: value })
             }
           />
           <Select
-            label="KYC Status"
+            label={t("kyc_status")}
             options={kycStatusOptions}
             value={filters.kyc_status}
             setValue={(value) => setFilters({ ...filters, kyc_status: value })}
-            placeholder="Select KYC status"
+            placeholder={t("select_kyc_status")}
           />
           <Input
-            label="Mobile Number"
-            placeholder="Search by Mobile Number"
+            label={t("mobile_number")}
+            placeholder={t("search_by_mobile_number")}
             inputValue={filters.mobile_no}
             setInputValue={(value) =>
               setFilters({ ...filters, mobile_no: value })
             }
           />
           <Input
-            label="Email"
-            placeholder="Search by Email"
+            label={t("email")}
+            placeholder={t("search_by_email")}
             inputValue={filters.email}
             setInputValue={(value) => setFilters({ ...filters, email: value })}
           />

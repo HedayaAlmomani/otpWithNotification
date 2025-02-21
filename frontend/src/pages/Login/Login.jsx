@@ -7,10 +7,11 @@ import { LoginIcon } from "../../icons";
 import SVG from "react-inlinesvg";
 import OTPInput from "../../CoreComponent/OTPInput";
 import { useNavigate } from "react-router-dom";
-import { t } from "../../localization/index";
+import useLanguage from '../../localization/index';
 import "./style.scss";
 
 const Login = () => {
+  const { t } = useLanguage();
   const navigate = useNavigate();
   const [mobileNumber, setMobileNumber] = useState("");
   const [otp, setOtp] = useState("");

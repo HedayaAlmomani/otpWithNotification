@@ -1,22 +1,24 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
+import useLanguage from '../../localization'; // Import from localization.js
+
 import "./style.scss";
 
 const Navbar = () => {
-  const [language, setLanguage] = useState("en");
+  const { currentLanguage, setCurrentLanguage } = useLanguage(); // Access language state and set function
 
   useEffect(() => {
     const savedLanguage = localStorage.getItem("language") || "en";
-    setLanguage(savedLanguage);
+    setCurrentLanguage(savedLanguage); // Update language state from localStorage on mount
     document.documentElement.lang = savedLanguage;
     document.documentElement.dir = savedLanguage === "ar" ? "rtl" : "ltr";
-  }, []);
+  }, [setCurrentLanguage]);
 
   const changeLanguage = (lang) => {
-    setLanguage(lang);
+    setCurrentLanguage(lang);
     document.documentElement.lang = lang;
     document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
-    localStorage.setItem("language", lang);
+    localStorage.setItem("language", lang); // Store the selected language in localStorage
   };
 
   return (
@@ -29,13 +31,13 @@ const Navbar = () => {
         <div className="d-flex gap-2">
           <button
             onClick={() => changeLanguage("ar")}
-            className={`btn ${language === "ar" ? "btn-primary" : "btn-outline-primary"}`}
+            className={`btn ${currentLanguage === "ar" ? "btn-primary" : "btn-outline-primary"}`}
           >
             العربية
           </button>
           <button
             onClick={() => changeLanguage("en")}
-            className={`btn ${language === "en" ? "btn-primary" : "btn-outline-primary"}`}
+            className={`btn ${currentLanguage === "en" ? "btn-primary" : "btn-outline-primary"}`}
           >
             English
           </button>

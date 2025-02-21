@@ -1,15 +1,23 @@
 {
-    "invalid_mobile": "Invalid mobile number format. Please enter a valid Jordanian number.",
-    "failed_send_otp": "Failed to send OTP. Please try again.",
-    "invalid_otp": "Invalid OTP. Please try again.",
-    "verification_code": "Verification Code",
-    "otp_verification": "OTP Verification",
-    "enter_verification_code": "Enter the verification code sent to your SMS",
-    "enter_phone_number": "Enter phone number to send one time Password",
-    "mobile_number": "Mobile Number",
-    "submit_otp": "Submit OTP",
-    "send_otp": "Send OTP",
-    "verifying_otp": "Verifying OTP...",
-    "sending_otp": "Sending OTP..."
-  }
-  
+  "invalid_mobile": "Invalid mobile number format. Please enter a valid Jordanian number.",
+  "failed_send_otp": "Failed to send OTP. Please try again.",
+  "invalid_otp": "Invalid OTP. Please try again.",
+  "verification_code": "Verification Code",
+  "otp_verification": "OTP Verification",
+  "enter_verification_code": "Enter the verification code sent to your SMS",
+  "enter_phone_number": "Enter phone number to send one time Password",
+  "mobile_number": "Mobile Number",
+  "submit_otp": "Submit OTP",
+  "send_otp": "Send OTP",
+  "verifying_otp": "Verifying OTP...",
+  "sending_otp": "Sending OTP...",
+
+  "all_users": "All Users",
+  "full_name": "Full Name",
+  "search_by_full_name": "Search by Full Name",
+  "kyc_status": "KYC Status",
+  "select_kyc_status": "Select KYC status",
+  "search_by_mobile_number": "Search by Mobile Number",
+  "email": "Email",
+  "search_by_email": "Search by Email"
+}
