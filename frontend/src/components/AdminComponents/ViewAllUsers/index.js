@@ -66,16 +66,8 @@ const ViewAllUsers = () => {
     <div className="view-all-users-container">
       <div className="users-header">All Users</div>
       <div className="view-all-users">
-        <div className="main-content">
-          <Table
-            data={data}
-            columns={columns}
-            onSort={handleSort}
-            pagination={pagination}
-            setPagination={setPagination}
-          />
-        </div>
-        <div className="filters-container">
+ 
+        <div className="filters-container sticky-top">
           <Input
             label="Full Name"
             placeholder="Search by Full Name"
@@ -83,6 +75,13 @@ const ViewAllUsers = () => {
             setInputValue={(value) =>
               setFilters({ ...filters, full_name: value })
             }
+          />
+          <Select
+            label="KYC Status"
+            options={kycStatusOptions}
+            value={filters.kyc_status}
+            setValue={(value) => setFilters({ ...filters, kyc_status: value })}
+            placeholder="Select KYC status"
           />
           <Input
             label="Mobile Number"
@@ -98,12 +97,14 @@ const ViewAllUsers = () => {
             inputValue={filters.email}
             setInputValue={(value) => setFilters({ ...filters, email: value })}
           />
-          <Select
-            label="KYC Status"
-            options={kycStatusOptions}
-            value={filters.kyc_status}
-            setValue={(value) => setFilters({ ...filters, kyc_status: value })}
-            placeholder="Select KYC status"
+        </div>
+        <div className="main-content">
+          <Table
+            data={data}
+            columns={columns}
+            onSort={handleSort}
+            pagination={pagination}
+            setPagination={setPagination}
           />
         </div>
       </div>

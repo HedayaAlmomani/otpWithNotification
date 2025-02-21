@@ -41,7 +41,7 @@ const Table = ({ headers = [], data = [], pagination, setPagination }) => {
   };
 
   return (
-    <div className="table-container">
+    <div className="table-container container">
       <div className="table-wrapper">
         <table className="table">
           <thead>
