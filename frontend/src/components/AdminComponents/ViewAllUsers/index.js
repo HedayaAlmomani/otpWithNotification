@@ -10,7 +10,7 @@ const ViewAllUsers = () => {
   const [data, setData] = useState([]);
   const [pagination, setPagination] = useState({
     currentPage: 1,
-    perPage: 9,
+    perPage: 8,
     total: 0,
   });
 

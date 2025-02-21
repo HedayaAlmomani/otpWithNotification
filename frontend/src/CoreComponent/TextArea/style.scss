@@ -7,7 +7,7 @@
     font-size: 13px;
     font-weight: 500;
     line-height: 30px;
-    //text-align: end;
+    text-align: start;
     color: var(--element-color);
 
     .star {
@@ -28,7 +28,7 @@
       font-size: 13px;
       font-weight: 500;
       line-height: 20px;
-      //text-align: end;
+      text-align: start;
       resize: none;
       height: 110px;
       &::-webkit-scrollbar {
@@ -52,7 +52,7 @@
         font-size: 13px;
         font-weight: 500;
         line-height: 20px;
-        //text-align: end;
+        text-align: start;
         color: #b4b6c5;
       }
       &.error-msg {
@@ -72,7 +72,7 @@
     font-size: 11px;
     font-weight: 400;
     line-height: 17px;
-    //text-align: end;
+    text-align: start;
     color: var(--error-static);
   }
 }
