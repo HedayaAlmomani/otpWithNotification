@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
-import useLanguage from '../../../localization/index';
-
+import useLanguage from "../../../localization/index";
 import Table from "../../../CoreComponent/TableComponent";
 import httpServices from "../../../common/httpServices";
-import { columns, initialFilter, kycStatusOptions } from "./helper";
+import { initialFilter, kycStatusOptions } from "./helper";
 import Input from "../../../CoreComponent/Input";
 import Select from "../../../CoreComponent/Select";
 import "./style.scss";
@@ -16,7 +15,13 @@ const ViewAllUsers = () => {
     perPage: 8,
     total: 0,
   });
-
+  const columns = [
+    { key: "id", label: t("ID"), fixed: true },
+    { key: "full_name", label: t("name") },
+    { key: "mobile_no", label: t("mobile_number") },
+    { key: "email", label: t("email") },
+    { key: "kyc_status", label: t("kyc_status") },
+  ];
   const [filters, setFilters] = useState(initialFilter);
 
   const sendUserData = async () => {
@@ -67,7 +72,7 @@ const ViewAllUsers = () => {
 
   return (
     <div className="view-all-users-container">
-      <div className="users-header">{t("all_users")}</div> {/* Translated text */}
+      <div className="users-header">{t("all_users")}</div>
       <div className="view-all-users">
         <div className="filters-container sticky-top">
           <Input
@@ -77,6 +82,7 @@ const ViewAllUsers = () => {
             setInputValue={(value) =>
               setFilters({ ...filters, full_name: value })
             }
+            required={false}
           />
           <Select
             label={t("kyc_status")}
@@ -84,6 +90,7 @@ const ViewAllUsers = () => {
             value={filters.kyc_status}
             setValue={(value) => setFilters({ ...filters, kyc_status: value })}
             placeholder={t("select_kyc_status")}
+            required={false}
           />
           <Input
             label={t("mobile_number")}
@@ -92,12 +99,14 @@ const ViewAllUsers = () => {
             setInputValue={(value) =>
               setFilters({ ...filters, mobile_no: value })
             }
+            required={false}
           />
           <Input
             label={t("email")}
             placeholder={t("search_by_email")}
             inputValue={filters.email}
             setInputValue={(value) => setFilters({ ...filters, email: value })}
+            required={false}
           />
         </div>
         <div className="main-content">
