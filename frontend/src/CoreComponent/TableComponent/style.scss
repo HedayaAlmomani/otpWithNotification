@@ -8,6 +8,14 @@
     scrollbar-width: thin;
     scrollbar-color: #f87c47cc #f0f0f0;
   }
+  .table-responsive {
+    overflow-x: scroll; /* Force scrollbar to always be visible */
+    -webkit-overflow-scrolling: touch;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    scrollbar-width: thin;
+    scrollbar-color: #f87c47cc #f0f0f0;
+  }
 
   .table-responsive::-webkit-scrollbar {
     width: 4px;
