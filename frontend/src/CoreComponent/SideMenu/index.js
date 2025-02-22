@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { NavLink } from "react-router-dom";
 import {
   FaChevronUp,
@@ -11,6 +11,7 @@ import "./style.scss";
 function SideMenu({ menuItems }) {
   const [activeMenu, setActiveMenu] = useState(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const menuRef = useRef(null);  
 
   const toggleMenu = (index) => {
     setActiveMenu((prev) => (prev === index ? null : index));
@@ -20,6 +21,19 @@ function SideMenu({ menuItems }) {
     setIsMenuOpen((prev) => !prev);
   };
 
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setActiveMenu(null); 
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   return (
     <>
       <button className="mobile-menu-toggle" onClick={toggleMobileMenu}>
@@ -27,6 +41,7 @@ function SideMenu({ menuItems }) {
       </button>
 
       <div
+        ref={menuRef} 
         className={`side-menu ${isMenuOpen ? "open-menu" : "close-my-menu"}`}
       >
         <div className="menu-header">

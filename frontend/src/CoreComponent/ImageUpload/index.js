@@ -3,7 +3,6 @@ import SVG from "react-inlinesvg";
 import { linkIcon, deleteIcon, downloadIcon } from "../../icons"; // Ensure downloadIcon is imported
 import "./style.scss";
 import defaultFileImage from "../../icons/fileIcon.svg";
-import { backendUrlImages } from "../../common/constant";
 
 const ImageUpload = ({
   errorMsg,
@@ -26,7 +25,7 @@ const ImageUpload = ({
   React.useEffect(() => {
     if (typeof inputValue === "string") {
       setFileName(inputValue.split("/").pop());
-      setFileURL(`${backendUrlImages}${inputValue}`);
+      setFileURL(`${inputValue}`);
     } else if (inputValue instanceof File) {
       setFileName(inputValue.name);
       setFileURL(URL.createObjectURL(inputValue));

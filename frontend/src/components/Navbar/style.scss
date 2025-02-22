@@ -12,16 +12,6 @@
   }
   .navbar-brand,
   .nav-link,
-  .btn {
-    text-decoration: none;
-    border: none;
-
-    &:hover {
-      border: none;
-      color: var(--primary-hover-color) !important;
-    }
-  }
-
   .navbar-toggler-icon {
     filter: invert(100%);
   }
@@ -31,5 +21,52 @@
   .dropdown-item.active,
   .dropdown-item:active {
     background-color: var(--primary-color);
+  }
+  .noti-box-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 45px;
+  }
+  .btn {
+    border: 2px solid white;
+    color: white;
+    transition: all 0.3s ease-in-out;
+
+    &.btn-primary {
+      background-color: white;
+      color: orange;
+      border-color: white;
+
+      &:hover {
+        background-color: darkorange;
+        color: white;
+      }
+    }
+
+    &.btn-outline-primary {
+      background-color: transparent;
+      border-color: orange;
+      color: orange;
+
+      &:hover {
+        background-color: white;
+        color: orange;
+      }
+    }
+  }
+  .user-avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+    // margin-bottom: 15px;
+  }
+  .user-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    color: rgb(107, 107, 107);
   }
 }

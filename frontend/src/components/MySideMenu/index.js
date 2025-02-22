@@ -18,6 +18,14 @@ const MySideMenu = () => {
       path: "/",
     },
     {
+      label: "Profile",
+      icon: <FaHome />,
+      children: [
+        { label: "Edit Profile", path: "/user-form" },
+        { label: "View Profile", path: "/user-profile" },
+      ],
+    },
+    {
       label: "About",
       icon: <FaInfoCircle />,
       path: "/about",

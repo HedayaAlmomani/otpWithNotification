@@ -32,6 +32,11 @@ import MySideMenu from "./components/MySideMenu";
 import NotificationComponent from "./components/NotificationComponent";
 import SettingsPage from "./components/Settings";
 import ViewAllUsers from "./components/AdminComponents/ViewAllUsers";
+import UserForm from "./components/UserComponents/UserForm";
+import UserProfile from "./components/UserComponents/UserProfile";
+import RealTimeNotifications from "./components/NotificationComponent";
+import NotificationBox from "./components/NotificationBox";
+import { AuthProvider } from "./common/authContext";
 
 const App = () => {
   const [showLoader, setShowLoader] = useState(false);
@@ -52,10 +57,11 @@ const App = () => {
 
   return (
     <div>
-      
       <div className="app-container">
         {location.pathname !== "/login" && <MySideMenu />}
         <div className="main-content">
+          {/* <RealTimeNotifications/> */}
+          {/* <NotificationBox/> */}
           {location.pathname !== "/login" && <Navbar />}
           <Loader show={showLoader} />
           <ScrollToTop>
@@ -68,10 +74,12 @@ const App = () => {
               <Route path="/cart" element={<Cart />} />
               <Route path="/login" element={<Login />} />
               <Route path="/settings" element={<SettingsPage />} />
+              <Route path="/user-form" element={<UserForm />} />
+              <Route path="/user-profile" element={<UserProfile />} />
               {/* <Route path="/checkout" element={<Checkout />} /> */}
 
               <Route path="/admin">
-              <Route path="users" element={<ViewAllUsers />} />
+                <Route path="users" element={<ViewAllUsers />} />
 
                 <Route path="new/menu" element={<CreateMenu />} />
                 <Route path="view/menu" element={<MenuViewer />} />
@@ -91,11 +99,12 @@ const App = () => {
 };
 
 const Root = () => (
-  
   <BrowserRouter>
-    <Provider store={store}>
-      <App />
-    </Provider>
+    <AuthProvider>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </AuthProvider>
   </BrowserRouter>
 );
 

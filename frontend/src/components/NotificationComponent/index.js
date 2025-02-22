@@ -25,7 +25,6 @@
 //       setIsLoading(false);
 //     }
 //   };
-  
 
 //   // Listen to real-time notifications using Laravel Echo
 //   useEffect(() => {
@@ -35,7 +34,7 @@
 //       cluster: "ap2",
 //       forceTLS: true,
 //     });
-  
+
 //     // Listen for the NotificationSent event on the user's channel
 //     echo.private(`user.1`).listen("NotificationSent", (event) => {
 //       // Handle the notification event (update state or show a toast)
@@ -44,7 +43,7 @@
 //         event.notification,
 //       ]);
 //     });
-  
+
 //     return () => {
 //       echo.disconnect();
 //     };
@@ -90,48 +89,49 @@
 
 // export default NotificationComponent;
 
-import React, { useState, useEffect } from 'react';
-import Pusher from 'pusher-js';
+import React, { useState, useEffect } from "react";
+import Pusher from "pusher-js";
 
 const RealTimeNotifications = () => {
-    const [notifications, setNotifications] = useState([]);
+  const [notifications, setNotifications] = useState([]);
 
-    useEffect(() => {
-        // Initialize Pusher with your credentials
-        const pusher = new Pusher('647617d4aeb36c0a33f7', { // PUSHER_APP_KEY
-            cluster: 'ap2', // PUSHER_APP_CLUSTER
-            forceTLS: true,
-        });
+  useEffect(() => {
+    // Initialize Pusher with your credentials
+    const pusher = new Pusher("647617d4aeb36c0a33f7", {
+      // PUSHER_APP_KEY
+      cluster: "ap2", // PUSHER_APP_CLUSTER
+      forceTLS: true,
+    });
 
-        // Subscribe to the 'notifications' channel
-        const channel = pusher.subscribe('notifications');
+    // Subscribe to the 'notifications' channel
+    const channel = pusher.subscribe("notifications");
 
-        // Listen for the 'new-notification' event
-        channel.bind('new-notification', (data) => {
-            // Add the new notification to the state
-            setNotifications((prevNotifications) => [
-                ...prevNotifications,
-                data.message,
-            ]);
-        });
+    // Listen for the 'new-notification' event
+    channel.bind("new-notification", (data) => {
+      // Add the new notification to the state
+      setNotifications((prevNotifications) => [
+        ...prevNotifications,
+        data.message,
+      ]);
+    });
 
-        // Cleanup on component unmount
-        return () => {
-            pusher.unsubscribe('notifications');
-            pusher.disconnect();
-        };
-    }, []);
+    // Cleanup on component unmount
+    return () => {
+      pusher.unsubscribe("notifications");
+      pusher.disconnect();
+    };
+  }, []);
 
-    return (
-        <div>
-            <h2>Real-Time Notifications</h2>
-            <ul>
-                {notifications.map((notification, index) => (
-                    <li key={index}>{notification}</li>
-                ))}
-            </ul>
-        </div>
-    );
+  return (
+    <div>
+      <h2>Real-Time Notifications</h2>
+      <ul>
+        {notifications.map((notification, index) => (
+          <li key={index}>{notification}</li>
+        ))}
+      </ul>
+    </div>
+  );
 };
 
 export default RealTimeNotifications;

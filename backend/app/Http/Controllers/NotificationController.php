@@ -35,20 +35,19 @@ class NotificationController extends Controller
         ], 201);
     }
 
-    public function getAllNotifications(Request $request)
+    public function getUserNotifications(Request $request)
     {
-        $validatedData = $request->validate([
-            'user_id' => 'required|exists:users,id',
-        ]);
-
-        $notifications = Notification::where('user_id', $validatedData['user_id'])
+        $userId = auth()->id(); 
+    
+        $notifications = Notification::where('user_id', $userId)
             ->orderBy('created_at', 'desc')
             ->get();
-
+    
         return response()->json([
             'notifications' => $notifications,
         ]);
     }
+    
 
     public function markAsRead(Request $request, $id)
     {

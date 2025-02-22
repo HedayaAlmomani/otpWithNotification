@@ -139,64 +139,64 @@ class AuthOtpController extends Controller
     
 
     // Function to send SMS using Twilio (mock implementation)
-    // private function sendSMS($receiverNumber, $otp)
-    // {
-    //     // This is a mock API. Replace with actual Twilio integration if needed.
-    //     $message = 'Your OTP is: ' . $otp;
+    private function sendSMS($receiverNumber, $otp)
+    {
+        // This is a mock API. Replace with actual Twilio integration if needed.
+        $message = 'Your OTP is: ' . $otp;
 
-    //     try {
-    //         // Example Twilio integration (commented out)
-    //         // $TwilioSid = env('TWILIO_SID');
-    //         // $TwilioToken = env('TWILIO_AUTH_TOKEN');
-    //         // $TwilioNumber = env('TWILIO_NUMBER');
+        try {
+            // Example Twilio integration (commented out)
+            // $TwilioSid = env('TWILIO_SID');
+            // $TwilioToken = env('TWILIO_AUTH_TOKEN');
+            // $TwilioNumber = env('TWILIO_NUMBER');
 
-    //         // $client = new \Twilio\Rest\Client($TwilioSid, $TwilioToken);
-    //         // $client->messages->create('+91' . $receiverNumber, [
-    //         //     'from' => $TwilioNumber,
-    //         //     'body' => $message
-    //         // ]);
+            // $client = new \Twilio\Rest\Client($TwilioSid, $TwilioToken);
+            // $client->messages->create('+91' . $receiverNumber, [
+            //     'from' => $TwilioNumber,
+            //     'body' => $message
+            // ]);
 
-    //         // Log the OTP for testing purposes
+            // Log the OTP for testing purposes
 
-    //     } catch (\Exception $e) {
-    //         return response()->json(['error' => $e->getMessage()], 500);
-    //     }
-    // }
-
-
-
-
-
-
-
-
-public function sendSMS($receiverNumber, $otp)
-{
-    // إعدادات Twilio
-    $sid = env('TWILIO_SID');
-    $authToken = env('TWILIO_AUTH_TOKEN');
-    $twilioPhoneNumber = env('TWILIO_PHONE_NUMBER');
-
-    // إنشاء عميل Twilio
-    $client = new Client($sid, $authToken);
-
-    // إرسال الرسالة عبر Twilio
-    try {
-        $client->messages->create(
-            $receiverNumber, // الرقم المستلم
-            [
-                'from' => $twilioPhoneNumber, // الرقم الخاص بحساب Twilio
-                'body' => 'Your OTP is: ' . $otp, // محتوى الرسالة
-            ]
-        );
-
-        return true; // نجاح إرسال الرسالة
-    } catch (\Exception $e) {
-    return response()->json([
-        'error'=>'an error occured',
-        'message'=>$e->getMessage()
-    ],500);
+        } catch (\Exception $e) {
+            return response()->json(['error' => $e->getMessage()], 500);
+        }
     }
-}
+
+
+
+
+
+
+
+
+// public function sendSMS($receiverNumber, $otp)
+// {
+//     // إعدادات Twilio
+//     $sid = env('TWILIO_SID');
+//     $authToken = env('TWILIO_AUTH_TOKEN');
+//     $twilioPhoneNumber = env('TWILIO_PHONE_NUMBER');
+
+//     // إنشاء عميل Twilio
+//     $client = new Client($sid, $authToken);
+
+//     // إرسال الرسالة عبر Twilio
+//     try {
+//         $client->messages->create(
+//             $receiverNumber, // الرقم المستلم
+//             [
+//                 'from' => $twilioPhoneNumber, // الرقم الخاص بحساب Twilio
+//                 'body' => 'Your OTP is: ' . $otp, // محتوى الرسالة
+//             ]
+//         );
+
+//         return true; // نجاح إرسال الرسالة
+//     } catch (\Exception $e) {
+//     return response()->json([
+//         'error'=>'an error occured',
+//         'message'=>$e->getMessage()
+//     ],500);
+//     }
+// }
 
 }
