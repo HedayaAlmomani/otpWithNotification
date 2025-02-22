@@ -1,30 +1,305 @@
+// :root {
+//   --color-shadow: rgba(0, 0, 0, 0.05);
+// }
+
+// .side-menu {
+//   width: 250px;
+//   height: 100vh;
+//   background: var(--bg-color);
+//   color: var(--secondary-text-color);
+//   border-inline-end: 1px solid var(--border-color);
+//   transition: transform 0.3s ease-in-out;
+//   z-index: 100000000000;
+
+//   .menu-header {
+//     display: flex;
+//     justify-content: space-between;
+//     align-items: center;
+//     padding: 12px;
+//     background: var(--bg-color);
+//     border-bottom: 1px solid var(--border-color);
+//     svg {
+//       height: 1rem;
+//       width: 1rem;
+//     }
+//     .new-logo {
+//       height: 50px;
+//     }
+
+//     .close-menu {
+//       background: none;
+//       border: none;
+//       color: var(--primary-hover-color);
+//       font-size: 22px;
+//       cursor: pointer;
+//       transition: color 0.3s ease;
+
+//       &:hover {
+//         color: var(--primary-color);
+//       }
+//     }
+//   }
+
+//   .menu-list {
+//     list-style: none;
+//     padding: 0;
+//     margin: 0;
+//     margin: 0;
+//     height: calc(100vh - 70px);
+//     //todo hedaya
+//     // overflow: overlay;
+
+//     &::-webkit-scrollbar {
+//       display: none;
+//     }
+
+//     .menu-item {
+//       border-bottom: 1px solid var(--border-color);
+
+//       .menu-title {
+//         display: flex;
+//         justify-content: space-between;
+//         align-items: center;
+//         padding: 10px 10px;
+//         cursor: pointer;
+//         transition: background-color 0.3s ease;
+
+//         &:hover {
+//           background-color: rgba(255, 138, 101, 0.1);
+//         }
+//         .label {
+//           font-size: 13px;
+//           margin-inline-start: 20px;
+//         }
+//         .icon {
+//           margin-inline-start: 10px;
+//           font-size: 20px;
+//           color: var(--primary-hover-color);
+
+//           svg {
+//             height: 0.9rem;
+//             width: 0.9rem;
+//           }
+//         }
+//       }
+
+//       .submenu {
+//         list-style: none;
+//         padding: 0;
+//         margin: 0;
+//         max-height: 0;
+//         overflow: hidden;
+//         transition: max-height 0.3s ease, opacity 0.3s ease;
+//         opacity: 0;
+
+//         &.open {
+//           max-height: 200px;
+//           opacity: 1;
+//         }
+
+//         .submenu-item a {
+//           display: block;
+//           padding: 15px 55px;
+//           text-decoration: none;
+//           color: var(--secondary-text-color);
+//           transition: background-color 0.3s ease, color 0.3s ease;
+//           font-size: 13px;
+//           height: 48px;
+//           &:hover {
+//             background-color: var(--primary-hover-color);
+//             color: var(--bg-color);
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
+
+// .mobile-menu-toggle {
+//   display: none;
+//   background: none;
+//   border: none;
+//   color: var(--primary-color);
+//   font-size: 24px;
+//   cursor: pointer;
+//   position: fixed;
+//   top: 20px;
+//   left: 20px;
+//   z-index: 110000000000;
+//   transition: color 0.3s ease;
+
+//   &:hover {
+//     color: var(--primary-color);
+//   }
+// }
+
+// @media (max-width: 768px) {
+//   .side-menu {
+//     position: fixed;
+//     top: 0;
+//     left: 0;
+//     transform: translateX(-100%);
+//     z-index: 10000000000000;
+
+//     &.open-menu {
+//       transform: translateX(0);
+//       box-shadow: 2px 0 10px var(--color-shadow);
+//     }
+//   }
+
+//   .mobile-menu-toggle {
+//     display: block;
+//     top: 14px;
+//   }
+// }
+
+// @media (min-width: 768px) {
+//   .side-menu {
+//     position: sticky;
+//     top: 0;
+//     z-index: 1000000000000;
+//     transition: width 0.5s ease;
+
+//     &.close-my-menu {
+//       width: 60px;
+
+//       .menu-title .label,
+//       .arrow {
+//         display: none;
+//       }
+
+//       .menu-header .new-logo {
+//         display: none;
+//       }
+
+//       .menu-item {
+//         position: relative;
+
+//         .submenu {
+//           position: absolute;
+//           left: 60px;
+//           top: 0;
+//           background: var(--bg-color);
+//           border-radius: 8px;
+//           box-shadow: 3px 3px 12px var(--color-shadow);
+//           z-index: 1000;
+//           max-height: 0;
+//           overflow: hidden;
+//           transition: max-height 0.3s ease;
+//           max-width: 400px;
+
+//           &.open {
+//             max-height: 220px;
+//           }
+
+//           .submenu-item {
+//             white-space: nowrap;
+
+//             a {
+//               color: var(--secondary-text-color);
+//               text-decoration: none;
+//               display: block;
+//               transition: color 0.3s ease;
+
+//               &:hover {
+//                 color: var(--primary-hover-color);
+//               }
+//             }
+//           }
+//         }
+//       }
+//     }
+
+//     .menu-header {
+//       height: 69.5px;
+//       padding: 0 16px;
+
+//       .collapse-icon {
+//         background: none;
+//         border: none;
+//         color: var(--primary-hover-color);
+//         font-size: 22px;
+//         cursor: pointer;
+//         transition: transform 0.3s ease, color 0.3s ease;
+
+//         &:hover {
+//           transform: scale(1.1);
+//           color: var(--primary-color);
+//         }
+//       }
+//     }
+
+//     .menu-list {
+//       .menu-item {
+//         .menu-title {
+//           color: var(--secondary-text-color);
+//           border-radius: 6px;
+//           flex-wrap: nowrap;
+//           white-space: nowrap;
+        // overflow: hidden;
+
+
+//           &:hover {
+//             background-color: rgba(255, 138, 101, 0.1);
+//             color: var(--primary-hover-color);
+//           }
+
+//           .icon {
+//             margin-inline-start: 12px;
+//           }
+
+//           .label {
+//             font-weight: 600;
+//           }
+
+//           .arrow {
+//             font-size: 14px;
+//             color: var(--primary-hover-color);
+//             margin-inline-end: 15px;
+//             svg {
+//               height: 0.9rem;
+//               width: 0.9rem;
+//             }
+//           }
+//         }
+
+//         .submenu {
+//           background-color: var(--bg-color);
+
+//           .submenu-item a {
+//             padding: 12px 16px;
+
+//             &:hover {
+//               color: var(--bg-color);
+//               background-color: var(--primary-hover-color);
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
+
 :root {
-  --color-white: #ffffff;
-  --color-gray-200: #f1f5f9;
-  --color-gray-700: #4a5568;
-  --color-orange-500: #ff8a65;
-  --color-orange-600: #ff7043;
   --color-shadow: rgba(0, 0, 0, 0.05);
 }
 
-/* Side Menu */
 .side-menu {
   width: 250px;
   height: 100vh;
-  background: var(--color-white);
-  color: var(--color-gray-700);
-  border-inline-end: 1px solid var(--color-gray-200);
-  transition: transform 0.3s ease-in-out;
+  background: var(--bg-color);
+  color: var(--secondary-text-color);
+  border-inline-end: 1px solid var(--border-color);
+  transition: transform 0.3s ease-in-out, width 0.3s ease-in-out; /* Added width transition for collapsing menu */
   z-index: 100000000000;
 
-  /* Menu Header */
   .menu-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 12px;
-    background: var(--color-white);
-    border-bottom: 1px solid var(--color-gray-200);
+    background: var(--bg-color);
+    border-bottom: 1px solid var(--border-color);
     svg {
       height: 1rem;
       width: 1rem;
@@ -36,18 +311,17 @@
     .close-menu {
       background: none;
       border: none;
-      color: var(--color-orange-500);
+      color: var(--primary-hover-color);
       font-size: 22px;
       cursor: pointer;
       transition: color 0.3s ease;
 
       &:hover {
-        color: var(--color-orange-600);
+        color: var(--primary-color);
       }
     }
   }
 
-  /* Menu List */
   .menu-list {
     list-style: none;
     padding: 0;
@@ -62,7 +336,7 @@
     }
 
     .menu-item {
-      border-bottom: 1px solid var(--color-gray-200);
+      border-bottom: 1px solid var(--border-color);
 
       .menu-title {
         display: flex;
@@ -71,22 +345,30 @@
         padding: 10px 10px;
         cursor: pointer;
         transition: background-color 0.3s ease;
-
+        overflow: hidden;
         &:hover {
           background-color: rgba(255, 138, 101, 0.1);
         }
         .label {
           font-size: 13px;
           margin-inline-start: 20px;
+          transition: opacity 0.3s ease; /* Label fade in/out for collapse */
         }
         .icon {
           margin-inline-start: 10px;
           font-size: 20px;
-          color: var(--color-orange-500);
+          color: var(--primary-hover-color);
 
           svg {
             height: 0.9rem;
             width: 0.9rem;
+          }
+        }
+        .arrow {
+          transition: transform 0.3s ease; /* Rotate the arrow */
+
+          &.rotate {
+            transform: rotate(90deg);
           }
         }
       }
@@ -97,25 +379,27 @@
         margin: 0;
         max-height: 0;
         overflow: hidden;
-        transition: max-height 0.3s ease, opacity 0.3s ease;
+        transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out,
+          padding-bottom 0.3s ease-in-out; /* Smooth transition for height & opacity */
         opacity: 0;
 
         &.open {
-          max-height: 200px;
+          max-height: 500px; /* Or a larger value to accommodate many items */
           opacity: 1;
+          padding-bottom: 10px; /* Add some space when opened */
         }
 
         .submenu-item a {
           display: block;
           padding: 15px 55px;
           text-decoration: none;
-          color: var(--color-gray-700);
+          color: var(--secondary-text-color);
           transition: background-color 0.3s ease, color 0.3s ease;
           font-size: 13px;
           height: 48px;
           &:hover {
-            background-color: var(--color-orange-500);
-            color: var(--color-white);
+            background-color: var(--primary-hover-color);
+            color: var(--bg-color);
           }
         }
       }
@@ -123,7 +407,6 @@
   }
 }
 
-/* Mobile Menu Toggle */
 .mobile-menu-toggle {
   display: none;
   background: none;
@@ -138,11 +421,10 @@
   transition: color 0.3s ease;
 
   &:hover {
-    color: var(--color-orange-600);
+    color: var(--primary-color);
   }
 }
 
-/* Responsive Styles */
 @media (max-width: 768px) {
   .side-menu {
     position: fixed;
@@ -150,6 +432,7 @@
     left: 0;
     transform: translateX(-100%);
     z-index: 10000000000000;
+    transition: transform 0.3s ease-in-out; /*Mobile menu drawer animation*/
 
     &.open-menu {
       transform: translateX(0);
@@ -189,7 +472,7 @@
           position: absolute;
           left: 60px;
           top: 0;
-          background: var(--color-white);
+          background: var(--bg-color);
           border-radius: 8px;
           box-shadow: 3px 3px 12px var(--color-shadow);
           z-index: 1000;
@@ -206,13 +489,13 @@
             white-space: nowrap;
 
             a {
-              color: var(--color-gray-700);
+              color: var(--secondary-text-color);
               text-decoration: none;
               display: block;
               transition: color 0.3s ease;
 
               &:hover {
-                color: var(--color-orange-500);
+                color: var(--primary-hover-color);
               }
             }
           }
@@ -227,14 +510,14 @@
       .collapse-icon {
         background: none;
         border: none;
-        color: var(--color-orange-500);
+        color: var(--primary-hover-color);
         font-size: 22px;
         cursor: pointer;
         transition: transform 0.3s ease, color 0.3s ease;
 
         &:hover {
           transform: scale(1.1);
-          color: var(--color-orange-600);
+          color: var(--primary-color);
         }
       }
     }
@@ -242,14 +525,14 @@
     .menu-list {
       .menu-item {
         .menu-title {
-          color: var(--color-gray-700);
+          color: var(--secondary-text-color);
           border-radius: 6px;
           flex-wrap: nowrap;
           white-space: nowrap;
 
           &:hover {
             background-color: rgba(255, 138, 101, 0.1);
-            color: var(--color-orange-500);
+            color: var(--primary-hover-color);
           }
 
           .icon {
@@ -262,7 +545,7 @@
 
           .arrow {
             font-size: 14px;
-            color: var(--color-orange-500);
+            color: var(--primary-hover-color);
             margin-inline-end: 15px;
             svg {
               height: 0.9rem;
@@ -272,14 +555,14 @@
         }
 
         .submenu {
-          background-color: var(--color-white);
+          background-color: var(--bg-color);
 
           .submenu-item a {
             padding: 12px 16px;
 
             &:hover {
-              color: var(--color-white);
-              background-color: var(--color-orange-500);
+              color: var(--bg-color);
+              background-color: var(--primary-hover-color);
             }
           }
         }

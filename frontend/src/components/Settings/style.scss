@@ -105,4 +105,22 @@
   &:hover {
     background-color: var(--primary-hover-color);
   }
+
+.button-group {
+  display: flex;
+  gap: 10px;
+}
+
+.theme-btn {
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+  background-color: var(--primary-color);
+  color: #fff;
+  border-radius: 5px;
+}
+
+.theme-btn.active {
+  background-color: #e56a35;
+}
 }
