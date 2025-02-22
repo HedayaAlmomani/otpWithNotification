@@ -1,138 +1,108 @@
-$primary-color: #FF6F61; // Orange
-$background-color: #F4F4F4; // Light gray
-$card-background: #FFFFFF; // White
-$text-color: #333333; // Dark gray
-$active-color: #FF6F61; // Orange
-$button-hover: darken($primary-color, 10%);
-$border-radius: 8px;
-$box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 
 .settings-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
-  background-color: $background-color;
-  padding: 20px;
+  background-color: var(--background-color);
+  padding: 2rem;
+  margin-top: 20px;
 }
 
 .settings-card {
-  background-color: $card-background;
-  border-radius: $border-radius;
-  box-shadow: $box-shadow;
-  padding: 24px;
+  background-color: var(--bg-color);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px var(--shadow-color);
+  padding: 2rem;
   max-width: 500px;
   width: 100%;
 }
 
 .settings-title {
-  font-size: 24px;
-  font-weight: bold;
-  color: $text-color;
-  margin-bottom: 20px;
+  font-size: 2rem;
+  color: var(--primary-text-color);
+  margin-bottom: 1.5rem;
   text-align: center;
 }
 
 .settings-content {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 1.5rem;
 }
 
 .setting-label {
-  font-size: 16px;
-  font-weight: 600;
-  color: $text-color;
-  margin-bottom: 8px;
+  font-size: 1rem;
+  color: var(--text-color);
+  margin-bottom: 0.5rem;
   display: block;
 }
 
 .button-group {
   display: flex;
-  gap: 10px;
+  gap: 1rem;
+  justify-content: center;
 }
 
 .language-btn,
 .theme-btn,
 .save-btn {
-  padding: 10px 20px;
+  padding: 0.75rem 1.5rem;
   border: none;
-  border-radius: $border-radius;
-  font-size: 14px;
-  font-weight: 500;
+  border-radius: 8px;
+  font-size: 1rem;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
 
   &:hover {
     transform: translateY(-2px);
   }
+
+  &:active {
+    transform: translateY(0);
+  }
 }
 
 .language-btn {
-  background-color: $background-color;
-  color: $text-color;
+  background-color: var(--secondary-color);
+  color: var(--text-color);
 
   &.active {
-    background-color: $active-color;
-    color: #FFFFFF;
+    background-color: var(--primary-color);
+    color: var(--bg-color);
+  }
+
+  &:hover {
+    background-color: var(--primary-hover-color);
+    color: var(--bg-color);
   }
 }
 
 .theme-btn {
-  background-color: $background-color;
-  color: $text-color;
+  background-color: var(--secondary-color);
+  color: var(--text-color);
 
   &.light {
-    background-color: $primary-color;
-    color: #FFFFFF;
+    background-color: var(--primary-color);
+    color: var(--bg-color);
   }
 
   &.dark {
-    background-color: #333333;
-    color: #FFFFFF;
+    background-color: var(--element-color);
+    color: var(--bg-color);
+  }
+
+  &:hover {
+    background-color: var(--primary-hover-color);
   }
 }
 
 .save-btn {
-  background-color: $primary-color;
-  color: #FFFFFF;
+  background-color: var(--primary-color);
+  color: var(--bg-color);
   width: 100%;
+  margin-top: 1.5rem;
 
   &:hover {
-    background-color: $button-hover;
+    background-color: var(--primary-hover-color);
   }
-}
-
-.dark {
-  .settings-card {
-    background-color: #333333;
-    color: #FFFFFF;
-  }
-
-  .settings-title,
-  .setting-label {
-    color: #FFFFFF;
-  }
-
-  .language-btn,
-  .theme-btn {
-    background-color: #444444;
-    color: #FFFFFF;
-
-    &.active {
-      background-color: $active-color;
-    }
-  }
-
-  .save-btn {
-    background-color: $primary-color;
-    color: #FFFFFF;
-
-    &:hover {
-      background-color: $button-hover;
-    }
-  }
-
-
-  
 }

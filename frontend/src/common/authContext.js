@@ -8,7 +8,7 @@ export const AuthProvider = ({ children }) => {
 
   const fetchUserData = async () => {
     try {
-      const response = await httpServices.get(`http://localhost:8000/api/user-data`);
+      const response = await httpServices.get(`http://localhost:8000/api/user-data` , {} , false);
       if (response.data.success) {
         const user = response.data.user;
         setUserData({

@@ -42,10 +42,10 @@ const ViewAllUsers = () => {
 
       const formattedData = users.map((user) => ({
         id: user.id,
-        full_name: user.full_name || "N/A",
-        mobile_no: user.mobile_no || "N/A",
-        email: user.email || "N/A",
-        kyc_status: user.kyc_status || "N/A",
+        full_name: user.full_name || "-",
+        mobile_no: user.mobile_no || "-",
+        email: user.email || "-",
+        kyc_status: user.kyc_status || "-",
       }));
 
       setData(formattedData);

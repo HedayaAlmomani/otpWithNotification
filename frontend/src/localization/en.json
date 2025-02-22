@@ -20,5 +20,6 @@
   "email": "Email",
   "search_by_email": "Search by Email",
   "ID":"ID",
-  "name":"Name"
+  "name":"Name",
+  "Language":"Language"
 }

@@ -28,9 +28,9 @@ const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-lg bg-light sticky-top navbar-container">
       <div className="container">
-        <NavLink className="navbar-brand fw-bold fs-2" to="/">
+        <div className="web-title">
           Osama Coins
-        </NavLink>
+        </div>
 
         <div className="d-flex noti-box-container">
           <NotificationBox />

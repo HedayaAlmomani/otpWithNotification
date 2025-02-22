@@ -7,6 +7,7 @@ import {
   FaSignInAlt,
   FaTools,
   FaCog,
+  FaUser
 } from "react-icons/fa";
 import "./style.scss";
 
@@ -19,7 +20,7 @@ const MySideMenu = () => {
     },
     {
       label: "Profile",
-      icon: <FaHome />,
+      icon: <FaUser />, 
       children: [
         { label: "Edit Profile", path: "/user-form" },
         { label: "View Profile", path: "/user-profile" },

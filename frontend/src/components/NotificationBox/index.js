@@ -4,40 +4,24 @@ import Pusher from "pusher-js";
 import "./style.scss";
 import httpServices from "../../common/httpServices";
 
-const API_URL = "https://your-api.com/notifications"; // استبدل بعنوان API الخاص بك
-
 const NotificationBox = () => {
   const [notifications, setNotifications] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
   const boxRef = useRef(null);
 
-
   const fetchNotifications = async () => {
     try {
       const response = await httpServices.get(
-        `http://localhost:8000/api/notifications`
+        `http://localhost:8000/api/notifications`, {} , false
       );
-      setNotifications(response?.data?.notifications)
-    } catch {
-    }
+      setNotifications(response?.data?.notifications);
+    } catch {}
   };
-  const markAsRead = async (id) => {
-    // try {
-    //   await fetch(`${API_URL}/${id}/read`, { method: "PUT" });
-    //   setNotifications((prev) =>
-    //     prev.map((notif) =>
-    //       notif.id === id ? { ...notif, is_read: true } : notif
-    //     )
-    //   );
-    // } catch (error) {
-    //   console.error("Error marking notification as read:", error);
-    // }
-  };
+  const markAsRead = async (id) => {};
 
   useEffect(() => {
     fetchNotifications();
 
-    // إعداد Pusher
     const pusher = new Pusher("647617d4aeb36c0a33f7", {
       cluster: "ap2",
       forceTLS: true,
@@ -55,7 +39,6 @@ const NotificationBox = () => {
     };
   }, []);
 
-  // إغلاق القائمة عند النقر خارجها
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (boxRef.current && !boxRef.current.contains(event.target)) {

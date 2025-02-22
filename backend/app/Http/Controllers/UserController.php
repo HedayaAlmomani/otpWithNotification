@@ -56,15 +56,13 @@ class UserController extends Controller
                 'kyc_reviewed_at' => $validatedData['kyc_reviewed_at'] ?? $user->kyc_reviewed_at,
                 'kyc_reviewed_by' => $validatedData['kyc_reviewed_by'] ?? $user->kyc_reviewed_by,
                 'referred_by' => $validatedData['referred_by'] ?? $user->referred_by,
-            ]);
-            // todo will check if user have     'email' , 'full_name', 'kyc_document_type', 'kyc_document_front',  'kyc_document_back',   'kyc_selfie_image'
-            //  will send notification      
+            ]); 
 
             $admins = User::where('role', 'admin')->get();
 
             // إرسال إشعار لكل إداري
             foreach ($admins as $admin) {
-                $this->createNotification($admin->id, "تم تحديث معلومات المستخدم: {$user->full_name}");
+                // $this->createNotification($admin->id, "تم تحديث معلومات المستخدم: {$user->full_name}");
             }
             return response()->json([
                 'success' => true,

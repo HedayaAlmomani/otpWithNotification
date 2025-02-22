@@ -20,13 +20,7 @@ import {
 } from "./pages";
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 import { Toaster } from "react-hot-toast";
-import CreateMenu from "./components/Admin/CreateMenu";
-import MenuViewer from "./components/Admin/MenuViewer";
-import CreateBranch from "./components/Admin/CreateBranch";
 import Loader from "./CoreComponent/Loader";
-import CreateItem from "./components/Admin/CreateItem";
-import ViewItems from "./components/Admin/ViewItems";
-import ViewBranches from "./components/Admin/ViewBranches";
 import SideMenu from "./CoreComponent/SideMenu";
 import MySideMenu from "./components/MySideMenu";
 import NotificationComponent from "./components/NotificationComponent";
@@ -80,11 +74,6 @@ const App = () => {
 
               <Route path="/admin">
                 <Route path="users" element={<ViewAllUsers />} />
-
-                <Route path="new/menu" element={<CreateMenu />} />
-                <Route path="view/menu" element={<MenuViewer />} />
-                <Route path="view/item" element={<ViewItems />} />
-                <Route path="view/branches" element={<ViewBranches />} />
               </Route>
 
               <Route path="*" element={<PageNotFound />} />

@@ -4,25 +4,25 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js";
 const Home = () => {
   const images = [
     {
-      src: "/assets/image.jpg",
+      src: "/assets/t1.webp",
       alt: "Image 1",
       title: "New Season Arrivals",
       text: "Explore our new collection for the season.",
     },
     {
-      src: "/assets/image1.jpg",
+      src: "/assets/t2.webp",
       alt: "Image 2",
       title: "Exclusive Discounts",
       text: "Don't miss out on limited-time offers.",
     },
     {
-      src: "/assets/image3.jpg",
+      src: "/assets/t3.jpg",
       alt: "Image 3",
       title: "Fresh Styles",
       text: "Upgrade your wardrobe with our fresh styles.",
     },
     {
-      src: "/assets/image4.jpg",
+      src: "/assets/t4.webp",
       alt: "Image 3",
       title: "Fresh Styles",
       text: "Upgrade your wardrobe with our fresh styles.",
